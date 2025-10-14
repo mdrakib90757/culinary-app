@@ -90,17 +90,6 @@ class AccountInformationScreen extends StatelessWidget {
                       },
                     ),
                     const Divider(height: 0, indent: 16, endIndent: 16),
-
-                    _buildSettingItem(
-                      icon: Icons.edit_outlined,
-                      title: 'Edit Profile',
-                      onTap: () {
-                        print(
-                          'Navigate to a second Edit Profile screen or different action',
-                        );
-                      },
-                    ),
-                    const Divider(height: 0, indent: 16, endIndent: 16),
                     // Change Password
                     _buildSettingItem(
                       icon: Icons.lock_outline,
