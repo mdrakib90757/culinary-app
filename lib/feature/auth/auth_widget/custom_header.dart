@@ -17,9 +17,9 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.primary,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+        //  borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
       ),
       padding: const EdgeInsets.only(top: 40.0, left: 20.0, right: 20.0),
       child: Column(
@@ -29,22 +29,22 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
             children: [
               if (showBackButton)
                 IconButton(
-                  icon:  Icon(Icons.arrow_back, color: AppColors.background),
+                  icon: Icon(Icons.arrow_back, color: AppColors.background),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
               const Spacer(),
               // You can add more icons here if needed, like the shopping cart icon
-              const Icon(Icons.shopping_bag_outlined, color: Colors.white),
+              Icon(Icons.shopping_bag_outlined, color: AppColors.whiteColor),
             ],
           ),
           Padding(
             padding: EdgeInsets.only(left: showBackButton ? 0 : 5, top: 10.0),
             child: Text(
               title,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: AppColors.whiteColor,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),

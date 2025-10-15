@@ -24,6 +24,7 @@ class _MainScreenState extends State<MainScreen> {
     const ProfileScreen(),
   ];
 
+  // onItemTapped Function
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

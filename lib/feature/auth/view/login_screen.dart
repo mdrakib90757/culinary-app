@@ -1,3 +1,4 @@
+import 'package:culinary_app/core/utils/color.dart';
 import 'package:culinary_app/feature/auth/auth_widget/custom_header.dart';
 import 'package:culinary_app/feature/auth/view/registration_screen.dart';
 import 'package:culinary_app/feature/main_feature/view/main_feature_screen.dart';
@@ -13,6 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool obscureIndex = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,34 +36,73 @@ class _LoginPageState extends State<LoginPage> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
+
             Text(
               'Sign in to continue',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey[600],
+                color: AppColors.greenColor.withOpacity(0.4),
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 50),
+
+            // email textField
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: 'Email',
+              cursorColor: AppColors.primary,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: AppColors.greenColor.withOpacity(0.4),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: AppColors.primary),
+                ),
+                hintText: 'Email',
                 prefixIcon: Icon(Icons.email_outlined),
               ),
             ),
             const SizedBox(height: 20),
+
+            // Password TextField
             TextField(
               controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
+              cursorColor: AppColors.primary,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: AppColors.greenColor.withOpacity(0.4),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: AppColors.primary),
+                ),
+                hintText: 'Password',
                 prefixIcon: Icon(Icons.lock_outline),
-                suffixIcon: Icon(Icons.visibility_off),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscureIndex = !obscureIndex;
+                    });
+                  },
+                  icon: Icon(
+                    obscureIndex ? Icons.visibility_off : Icons.visibility,
+                  ),
+                ),
               ),
+              obscureText: obscureIndex,
+              obscuringCharacter: "*",
             ),
             const SizedBox(height: 10),
+
+            // forget textButton
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -75,18 +116,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 30),
+
+            // Login Button
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
+              ),
               onPressed: () {
-               Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const MainScreen()),
+                  MaterialPageRoute(builder: (context) => const MainScreen()),
                 );
                 print('Login with: ${_emailController.text}');
               },
-              child: const Text('Login'),
+              child: Text(
+                'Login',
+                style: TextStyle(color: AppColors.whiteColor),
+              ),
             ),
             const SizedBox(height: 20),
+
+            //Registration Button navigate to registration Screen
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -99,7 +149,8 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegistrationPage()),
+                        builder: (context) => const RegistrationPage(),
+                      ),
                     );
                   },
                   child: Text(

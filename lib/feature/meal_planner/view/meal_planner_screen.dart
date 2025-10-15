@@ -70,13 +70,10 @@ class _MealPlannerScreenState extends State<MealPlannerScreen> {
           ),
 
           Positioned(
-            top:
-                headerHeight -
-                40,
+            top: headerHeight - 40,
             left: 0,
             right: 0,
-            bottom:
-                0,
+            bottom: 0,
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               children: <Widget>[
@@ -164,8 +161,7 @@ class _MealPlannerScreenState extends State<MealPlannerScreen> {
 
   Widget _buildDataTable(List<String> columns, List<List<String>> data) {
     return SingleChildScrollView(
-      scrollDirection:
-          Axis.horizontal,
+      scrollDirection: Axis.horizontal,
       child: DataTable(
         dividerThickness: 0,
         columnSpacing: 20.0,

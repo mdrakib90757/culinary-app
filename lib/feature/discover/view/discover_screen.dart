@@ -202,6 +202,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     );
   }
 
+  // filter dot widget
   Widget _buildFilterDot(Color color) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
